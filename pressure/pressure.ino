@@ -1,8 +1,8 @@
 #include <Servo.h> 
 
-#define fsrPin0 A0
-#define fsrPin1 A1
-#define fsrPin2 A2
+#define fsrPin0 A0 // yellow/orange
+#define fsrPin1 A1 // green/blue
+#define fsrPin2 A2 // red/brown
 #define fsrPin3 A3
 
 #define piezoPin 9
@@ -60,10 +60,15 @@ void loop() {
 
   tone(piezoPin, averageReading);
 
-  if (averageReading < 1e-6 || averageReading > 359)
-    averageReading = 0;
+  float servoVal = averageReading / 10;
 
-  servo1.write(averageReading * 4 / 10);
+  if (servoVal < 1e-6)
+    servoVal = 0;
+
+  if (servoVal > 90)
+    servoVal = 90;
+
+  servo1.write(servoVal);
   
   delay(100); //Delay 300 ms.
 }
