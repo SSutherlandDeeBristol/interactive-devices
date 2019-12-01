@@ -67,11 +67,30 @@ void loop() {
   float f4servoOutput = servoSense(f4Sense,servo4Pin);
   float f5servoOutput = servoSense(f5Sense,servo5Pin);
 
+  float pressure1 = analogRead(f1Sense);
+  float pressure2 = analogRead(f2Sense);
+  float pressure3 = analogRead(f3Sense);
+  float pressure4 = analogRead(f4Sense);
+  float pressure5 = analogRead(f5Sense);
+
+  Serial.print(pressure1);
+  Serial.print(",");
+  Serial.print(pressure2);
+  Serial.print(",");
+  Serial.print(pressure3);
+  Serial.print(",");
+  Serial.print(pressure4);
+  Serial.print(",");
+  Serial.println(pressure5);
+        
+  
+
   servo1.write(f1servoOutput);
   servo2.write(f2servoOutput);
   servo3.write(f3servoOutput);
   servo4.write(f4servoOutput);
   servo5.write(f5servoOutput);
+
 
 //  Serial.print(f3servoOutput);
 //  Serial.print(",");
@@ -115,6 +134,8 @@ void loop() {
 
 float servoSense(int pressurePin, int servoPin) {
   float pressure = analogRead(pressurePin);
-//  Serial.print(exp(pressure));
+  //Serial.print("New test");
+  //Serial.print(60 - exp((pressure * 5) / 1000));
+  //Serial.print("\n");
   return (60 - ((pressure/1000)*60));
 }
