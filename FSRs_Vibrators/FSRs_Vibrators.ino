@@ -1,14 +1,15 @@
 #include <math.h>
-// constants won't change. They're used here to set pin numbers:
-#define f3Sense A1     // the number of the pushbutton 1 pin
-#define f3Vib 5      // the number of the vib 1 pin
-
-#define f4Sense A0     // the number of the pushbutton pin
-#define f4Vib 6     // the number of the vib 2 pin
 
 
-float f3Pressure = 0;         // variable for reading the FSR status
-float f4Pressure = 0;         // variable for reading the FSR status
+#define f3Sense A1    // the number of the fsr 1 pin
+#define f3Vib 5       // the number of the vib 1 pin
+
+#define f4Sense A0    // the number of the fsr 2 pin
+#define f4Vib 6       // the number of the vib 2 pin
+
+
+float f3Pressure = 0; // variable for reading the FSR status
+float f4Pressure = 0; // variable for reading the FSR status
 float f3Force = 0;
 float f4Force = 0;
 
