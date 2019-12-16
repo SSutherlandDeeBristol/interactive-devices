@@ -127,9 +127,18 @@ void pressure(){
 
 float servoSense(int pressurePin, int servoPin) {
   float pressure = analogRead(pressurePin);
+  Serial.println(pressure);
   //Serial.print(“New test”);
   //Serial.print(60 - exp((pressure * 5) / 1000));
   //Serial.print(“\n”);
+  if (pressure <= 400) {
+    pressure = 0.6 * pressure;
+  } else if (pressure <= 800) {
+    pressure = ((pressure - 400) * 1.2) + 240;
+  } else {
+    pressure = ((pressure - 800) * 0.6) + 700;
+  }
+  
   return (60 - ((pressure/1000)*60));
 }
 
